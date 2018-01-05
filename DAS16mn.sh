@@ -58,6 +58,17 @@ echo "rpcuser=$rpcuser" >>das.conf
 echo "rpcpassword="
 read rpcpassword
 echo "rpcpassword=$rpcpassword" >>das.conf
+echo "rpcport="
+read rpcport
+echo "rpcport=$rpcport" >>das.conf
+echo "Enter your masternode's public ip address."
+echo "masternodeaddr="
+read vpsip
+echo "masternodeaddr=$vpsip:$rpcport" >> das.conf
+echo "Enter your masternode pirvate key/Gen key: "
+read mngenkey
+echo "masternodeprivkey=$mngenkey" >> das.conf
+
 
 echo "Now copying nodes to das.conf..."
 
