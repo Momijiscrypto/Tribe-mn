@@ -50,10 +50,8 @@ echo "Stopping server now..."
 
 cd
 cd .das
-echo "Please enter the masternode number. If this is your first, put 1, second put 2, and so on"
-echo "masternode="
-read mnNumber
-echo "masternode=$mnNumber" >>das.conf
+
+echo "masternode=1" >>das.conf
 echo "Please enter your rpc credentials... "
 echo "rpcuser="
 read rpcuser
@@ -61,6 +59,7 @@ echo "rpcuser=$rpcuser" >>das.conf
 echo "rpcpassword="
 read rpcpassword
 echo "rpcpassword=$rpcpassword" >>das.conf
+echo "Enter 9399 for your port if this is your first masternode"
 echo "rpcport="
 read rpcport
 echo "rpcport=$rpcport" >>das.conf
