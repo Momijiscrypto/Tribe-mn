@@ -51,7 +51,7 @@ echo "Stopping server now..."
 cd
 cd .das
 
-echo "masternode=1" >>das.conf
+
 echo "Please enter your rpc credentials... "
 echo "rpcuser="
 read rpcuser
@@ -111,6 +111,9 @@ sleep 60s
 cd
 cd DAS-Source/ubuntu16
 echo "Syncing..."
+./dasd -daemon
+echo "masternode=1" >>das.conf
+./das-cli stop
 ./dasd -daemon
 cd
 echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd DAS-Source/ubuntu16 and ./das-cli getblockcount"
