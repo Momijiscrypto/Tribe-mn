@@ -49,10 +49,7 @@ echo "Stopping server now..."
 cd
 cd .das
 
-read -p "Is this your first masternode? Y/N" choice
-case "$choice" in
-  y|Y ) echo "Running initial initialization..."
-  echo "Now copying nodes to das.conf..."
+ echo "Now copying nodes to das.conf..."
   sleep 3s
   echo "addnode=104.156.250.28:9399" >> das.conf
   echo "addnode=51.15.162.15:58758" >> das.conf
@@ -84,6 +81,10 @@ case "$choice" in
   echo "addnode=184.69.47.154:64672" >> das.conf
   echo "addnode=184.67.166.234:54491" >> das.conf
   echo "addnode=184.69.47.154:58173" >> das.conf
+
+read -p "Is this your first masternode? Y/N" choice
+case "$choice" in
+  y|Y ) echo "Running initial initialization..."
 cd
 cd DAS-Source/ubuntu16
 echo "Testing wallet with nodes..."
@@ -122,38 +123,6 @@ echo "Please enter your rpc credentials... "
   read mngenkey
   echo "masternodeprivkey=$mngenkey" >> das.conf;;
   n|N ) echo "Running second initialization..."
-  echo "Now copying nodes to das.conf..."
-  sleep 3s
-  echo "addnode=104.156.250.28:9399" >> das.conf
-  echo "addnode=51.15.162.15:58758" >> das.conf
-  echo "addnode=94.156.35.73:9399" >> das.conf
-  echo "addnode=45.77.114.30:9399" >> das.conf
-  echo "addnode=185.81.167.100:9399" >> das.conf
-  echo "addnode=198.58.117.5:9399" >> das.conf
-  echo "addnode=45.77.67.141:56585" >> das.conf
-  echo "addnode=193.27.209.108:48244" >> das.conf
-  echo "addnode=172.104.13.253:42668" >> das.conf
-  echo "addnode=144.217.67.68:46168" >> das.conf
-  echo "addnode=5.79.97.229:56590" >> das.conf
-  echo "addnode=46.4.37.60:9399" >> das.conf
-  echo "addnode=146.0.47.218:33020" >> das.conf
-  echo "addnode=51.15.162.15:53954" >> das.conf
-  echo "addnode=184.67.166.234:54527" >> das.conf
-  echo "addnode=193.27.209.108:53930" >> das.conf
-  echo "addnode=104.13.209.85:49735" >> das.conf
-  echo "addnode=46.163.166.59:56718" >> das.conf
-  echo "addnode=198.27.74.189:57912" >> das.conf
-  echo "addnode=185.213.208.179:63768" >> das.conf
-  echo "addnode=84.162.255.248:57203" >> das.conf
-  echo "addnode=45.32.193.12:41392" >> das.conf
-  echo "addnode=80.211.128.10:43612" >> das.conf
-  echo "addnode=108.231.195.26:64305" >> das.conf
-  echo "addnode=184.69.47.154:50689" >> das.conf
-  echo "addnode=52.23.180.74:9399" >> das.conf
-  echo "addnode=212.47.226.127:56972" >> das.conf
-  echo "addnode=184.69.47.154:64672" >> das.conf
-  echo "addnode=184.67.166.234:54491" >> das.conf
-  echo "addnode=184.69.47.154:58173" >> das.conf
 cd
 cd DAS-Source/ubuntu16
 echo "Testing wallet with nodes..."
@@ -197,26 +166,6 @@ cd .das
       echo "masternodeprivkey=$mngenkey" >> das.conf;;
   * ) echo "Please enter Y or N";;
 esac
-#   first part
-#
-#   echo "Please enter your rpc credentials... "
-#   echo "rpcuser="
-#   read rpcuser
-#   echo "rpcuser=$rpcuser" >>das.conf
-#   echo "rpcpassword="
-#   read rpcpassword
-#   echo "rpcpassword=$rpcpassword" >>das.conf
-#   echo "Enter 9399 if this is your first masternode."
-#   echo "rpcport="
-#   read rpcport
-#   echo "rpcport=$rpcport" >>das.conf
-#   echo "Enter your masternode's public ip address."
-#   echo "masternodeaddr="
-#   read vpsip
-#   echo "masternodeaddr=$vpsip:$rpcport" >> das.conf
-#   echo "Enter your masternode pirvate key/Gen key: "
-#   read mngenkey
-#   echo "masternodeprivkey=$mngenkey" >> das.conf
 #
 #     Second part
 #
@@ -242,14 +191,12 @@ esac
 #     echo "Enter your second masternode pirvate key/Gen key: "
 #     read mngenkey
 #     echo "masternodeprivkey=$mngenkey" >> das.conf
-#echo "Starting DAS daemon back up for syncing..."
 echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 cd
 cd DAS-Source/ubuntu16
 echo "Syncing..."
 ./dasd -daemon
-#echo "masternode=1" >>das.conf
 cd
 echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd DAS-Source/ubuntu16 and ./das-cli getblockcount"
 echo "Please confirm your block count is matching with the block explorer before running: ./das-cli masternode status "
