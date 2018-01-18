@@ -166,7 +166,7 @@ sleep 5s
 sleep 5s
 ./das-cli getblockcount
 echo "Stopping wallet daemon for rpc credentials..."
-./ das-cli stop
+./das-cli stop
 sleep 3s
 
 cd
