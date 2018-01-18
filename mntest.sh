@@ -191,7 +191,7 @@ cd .das
       echo "Enter your first masternode's public ip address."
       echo "masternodeaddr="
       read vpsip
-      echo "masternodeaddr=$vpsip:$rpcport" >> das.conf
+      echo "masternodeaddr=$vpsip:9399" >> das.conf
       echo "Enter your second masternode pirvate key/Gen key: "
       read mngenkey
       echo "masternodeprivkey=$mngenkey" >> das.conf;;
