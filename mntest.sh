@@ -171,7 +171,7 @@ sleep 3s
 
 cd
 cd .das
-
+      echo "masternode=1" >>das.conf
       echo "Please enter your rpc credentials... "
       echo "rpcuser="
       read rpcuser
