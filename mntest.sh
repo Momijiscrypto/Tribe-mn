@@ -187,7 +187,7 @@ cd .das
       echo "Enter your new vps ip address"
       echo "bind="
       read bind
-      echo "bind=$bind:$rpcport"
+      echo "bind=$bind:$rpcport" >> das.conf
       echo "Enter your first masternode's public ip address."
       echo "masternodeaddr="
       read vpsip
