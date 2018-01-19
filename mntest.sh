@@ -166,15 +166,15 @@ cd .das
       echo "masternodeaddr=$vpsip:9399" >> das.conf
       echo "Enter your second masternode pirvate key/Gen key: "
       read mngenkey
-      echo "masternodeprivkey=$mngenkey" >> das.conf;;
-  * ) echo "Please enter Y or N"
-echo "Waiting 60 seconds for backups to complete..."
-sleep 60s
-cd
-cd DAS-Source/ubuntu16
-echo "Syncing..."
-./dasd -daemon
-;;
+      echo "masternodeprivkey=$mngenkey" >> das.conf
+      echo "Waiting 60 seconds for backups to complete..."
+	sleep 60s
+	cd
+	cd DAS-Source/ubuntu16
+	echo "Syncing..."
+	./dasd -daemon
+	;;
+  * ) echo "Please enter Y or N";;
 esac
 ;;
 
@@ -260,15 +260,15 @@ cd .das
       echo "masternodeaddr=$vpsip:9399" >> das.conf
       echo "Enter your second masternode pirvate key/Gen key: "
       read mngenkey
-      echo "masternodeprivkey=$mngenkey" >> das.conf;;
-  * ) echo "Please enter Y or N"
-echo "Waiting 60 seconds for backups to complete..."
-sleep 60s
-cd
-cd DAS-Source/ubuntu17
-echo "Syncing..."
-./dasd -daemon
-;;
+      echo "masternodeprivkey=$mngenkey" >> das.conf
+      echo "Waiting 60 seconds for backups to complete..."
+	sleep 60s
+	cd
+	cd DAS-Source/ubuntu17
+	echo "Syncing..."
+	./dasd -daemon
+	;;
+  * ) echo "Please enter Y or N";
 esac
 ;;
 	*) echo "Please enter 16 or 17";;
