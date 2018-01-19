@@ -38,6 +38,9 @@ cd DAS-Source
 mv DAS-12.2-Ubuntu16-wwf ubuntu16
 mv DAS-12.2-Ubuntu17-wwf ubuntu17
 
+read -p "Are you on Ubuntu 16 or 17? " ubuntu
+case "$ubuntu" in
+	16) echo "Running the Ubuntu 16 version..."
 echo "Starting the DAS wallet daemon..."
 cd ubuntu16
 ./dasd -daemon
@@ -82,7 +85,7 @@ cd .das
   echo "addnode=184.67.166.234:54491" >> das.conf
   echo "addnode=184.69.47.154:58173" >> das.conf
 
-read -p "Is this your first masternode? Y/N" choice
+read -p "Is this your first masternode? Y/N " choice
 case "$choice" in
   y|Y ) echo "Running initial initialization..."
 cd
@@ -90,14 +93,14 @@ cd DAS-Source/ubuntu16
 echo "Testing wallet with nodes..."
 sleep 3s
 ./dasd -daemon
-echo "Running 3 block count tests..."
+echo "Running 3 block count tests... It's okay to get an error"
 ./das-cli getblockcount
 sleep 5s
 ./das-cli getblockcount
 sleep 5s
 ./das-cli getblockcount
 echo "Stopping wallet daemon for rpc credentials..."
-./ das-cli stop
+./das-cli stop
 sleep 3s
 
 cd
@@ -164,39 +167,109 @@ cd .das
       echo "Enter your second masternode pirvate key/Gen key: "
       read mngenkey
       echo "masternodeprivkey=$mngenkey" >> das.conf;;
-  * ) echo "Please enter Y or N";;
-esac
-#
-#     Second part
-#
-#     echo "Please enter your rpc credentials... "
-#     echo "rpcuser="
-#     read rpcuser
-#     echo "rpcuser=$rpcuser" >>das.conf
-#     echo "rpcpassword="
-#     read rpcpassword
-#     echo "rpcpassword=$rpcpassword" >>das.conf
-#     echo "Enter 9399 if this is your first masternode. Port must be set differentlt than your original"
-#     echo "rpcport="
-#     read rpcport
-#     echo "rpcport=$rpcport" >>das.conf
-#     echo "Enter your new vps ip address"
-#     echo "bind="
-#     read bind
-#     echo "bind=$bind:$rpcport"
-#     echo "Enter your first masternode's public ip address."
-#     echo "masternodeaddr="
-#     read vpsip
-#     echo "masternodeaddr=$vpsip:$rpcport" >> das.conf
-#     echo "Enter your second masternode pirvate key/Gen key: "
-#     read mngenkey
-#     echo "masternodeprivkey=$mngenkey" >> das.conf
+  * ) echo "Please enter Y or N"
 echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 cd
 cd DAS-Source/ubuntu16
-echo "Syncing..."
+echo "Syncing...";;
+esac
+;;
+
+	17) echo "Running the Ubuntu 17 version..."
+read -p "Is this your first masternode? Y/N " choice
+case "$choice" in
+  y|Y ) echo "Running initial initialization..."
+cd
+cd DAS-Source/ubuntu17
+echo "Testing wallet with nodes..."
+sleep 3s
+./dasd -daemon
+echo "Running 3 block count tests... It's okay to get an error"
+./das-cli getblockcount
+sleep 5s
+./das-cli getblockcount
+sleep 5s
+./das-cli getblockcount
+echo "Stopping wallet daemon for rpc credentials..."
+./das-cli stop
+sleep 3s
+
+cd
+cd .das
+
+echo "masternode=1" >> das.conf
+echo "Please enter your rpc credentials... "
+  echo "rpcuser="
+  read rpcuser
+  echo "rpcuser=$rpcuser" >>das.conf
+  echo "rpcpassword="
+  read rpcpassword
+  echo "rpcpassword=$rpcpassword" >>das.conf
+  echo "Enter 9399 if this is your first masternode."
+  echo "rpcport="
+  read rpcport
+  echo "rpcport=$rpcport" >>das.conf
+  echo "Enter your masternode's public ip address."
+  echo "masternodeaddr="
+  read vpsip
+  echo "masternodeaddr=$vpsip:$rpcport" >> das.conf
+  echo "Enter your masternode pirvate key/Gen key: "
+  read mngenkey
+  echo "masternodeprivkey=$mngenkey" >> das.conf;;
+  n|N ) echo "Running second initialization..."
+cd
+cd DAS-Source/ubuntu17
+echo "Testing wallet with nodes..."
+sleep 3s
+./dasd -daemon
+echo "Running 3 block count tests... It's okay to get an error."
+./das-cli getblockcount
+sleep 5s
+./das-cli getblockcount
+sleep 5s
+./das-cli getblockcount
+echo "Stopping wallet daemon for rpc credentials..."
+./das-cli stop
+sleep 3s
+
+cd
+cd .das
+      echo "masternode=1" >>das.conf
+      echo "Please enter your rpc credentials... "
+      echo "rpcuser="
+      read rpcuser
+      echo "rpcuser=$rpcuser" >>das.conf
+      echo "rpcpassword="
+      read rpcpassword
+      echo "rpcpassword=$rpcpassword" >>das.conf
+      echo "Enter 9399 if this is your first masternode. Port must be set differentlt than your original"
+      echo "Example: my second masternode will be set to port 9499 instead of 9399"
+      echo "rpcport="
+      read rpcport
+      echo "rpcport=$rpcport" >>das.conf
+      echo "Enter your new vps ip address"
+      echo "bind="
+      read bind
+      echo "bind=$bind:$rpcport" >> das.conf
+      echo "Enter your first masternode's public ip address."
+      echo "masternodeaddr="
+      read vpsip
+      echo "masternodeaddr=$vpsip:9399" >> das.conf
+      echo "Enter your second masternode pirvate key/Gen key: "
+      read mngenkey
+      echo "masternodeprivkey=$mngenkey" >> das.conf;;
+  * ) echo "Please enter Y or N"
+echo "Waiting 60 seconds for backups to complete..."
+sleep 60s
+cd
+cd DAS-Source/ubuntu17
+echo "Syncing...";;
+esac
+;;
+	*) echo "Please enter 16 or 17";;
+esac
 ./dasd -daemon
 cd
-echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd DAS-Source/ubuntu16 and ./das-cli getblockcount"
+echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd DAS-Source/ubuntu16 or cd DAS-Source/ubuntu17 and ./das-cli getblockcount"
 echo "Please confirm your block count is matching with the block explorer before running: ./das-cli masternode status "
