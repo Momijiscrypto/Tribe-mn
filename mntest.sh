@@ -172,7 +172,9 @@ echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 cd
 cd DAS-Source/ubuntu16
-echo "Syncing...";;
+echo "Syncing..."
+./dasd -daemon
+;;
 esac
 ;;
 
@@ -264,12 +266,13 @@ echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 cd
 cd DAS-Source/ubuntu17
-echo "Syncing...";;
+echo "Syncing..."
+./dasd -daemon
+;;
 esac
 ;;
 	*) echo "Please enter 16 or 17";;
 esac
-./dasd -daemon
 cd
 echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd DAS-Source/ubuntu16 or cd DAS-Source/ubuntu17 and ./das-cli getblockcount"
 echo "Please confirm your block count is matching with the block explorer before running: ./das-cli masternode status "
