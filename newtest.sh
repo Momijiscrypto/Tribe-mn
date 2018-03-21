@@ -29,12 +29,12 @@ echo "Installing Git..."
 apt-get install git-core -y
 
 
-echo "Cloning the BlockNinja Github for the compiled wallet..."
+echo "Cloning the Momijiscrypto Github for the compiled wallet..."
 cd
 mkdir das
 cd das
-git clone https://github.com/blocksninja/das-coin/releases/tag/v0.12.2.10
-tar xvf das-v0.12.2.10-ubuntu.tar.gz
+git clone https://github.com/Momijiscrypto/DAS-Masternode-script
+cd dasv012
 sleep 3s
 
 echo "Starting the DAS wallet daemon..."
@@ -85,6 +85,7 @@ case "$choice" in
   y|Y ) echo "Running initial initialization..."
 cd
 cd das
+cd dasv012
 echo "Testing wallet with nodes..."
 sleep 3s
 ./dasd -daemon
@@ -123,6 +124,7 @@ echo "Please enter your rpc credentials... "
   n|N ) echo "Running second initialization..."
 cd
 cd das
+cd dasv012
 echo "Testing wallet with nodes..."
 sleep 3s
 ./dasd -daemon
@@ -166,9 +168,10 @@ cd .das
 	sleep 60s
 	cd
 	cd das
+	cd dasv012
 	echo "Syncing..."
 	./dasd -daemon
 
 cd
-echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd DAS-Source/ubuntu16 or cd DAS-Source/ubuntu17 and ./das-cli getblockcount"
+echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd das/dasv012 and ./das-cli getblockcount"
 echo "Please confirm your block count is matching with the block explorer before running: ./das-cli masternode status "
