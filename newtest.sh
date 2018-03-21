@@ -38,6 +38,11 @@ cd das
 sleep 3s
 
 echo "Starting the DAS wallet daemon..."
+chmod +755 dasd
+chmod +755 das-cli
+chmod +755 das-tx
+sleep 3s
+
 ./dasd -daemon
 echo "Daemon started for 15 seconds..."
 sleep 15s
