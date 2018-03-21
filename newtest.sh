@@ -94,6 +94,7 @@ echo "Testing wallet with nodes..."
 sleep 3s
 ./dasd -daemon
 echo "Running 3 block count tests... It's okay to get an error"
+sleep 5s
 ./das-cli getblockcount
 sleep 5s
 ./das-cli getblockcount
@@ -167,15 +168,15 @@ cd .das
       echo "Enter your second masternode pirvate key/Gen key: "
       read mngenkey
       echo "masternodeprivkey=$mngenkey" >> das.conf
-      echo "Waiting 60 seconds for backups to complete..."
-	sleep 60s
-	cd
-	cd das
-	echo "Syncing..."
-	./dasd -daemon
 	;;
   * ) echo "Please enter Y or N";;
 esac
+echo "Waiting 60 seconds for backups to complete..."
+sleep 60s
+cd
+cd das
+echo "Syncing..."
+./dasd -daemon
 
 cd
 echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd das and ./das-cli getblockcount"
