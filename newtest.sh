@@ -176,7 +176,6 @@ cd .das
 	;;
   * ) echo "Please enter Y or N";;
 esac
-;;
 
 cd
 echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd das and ./das-cli getblockcount"
