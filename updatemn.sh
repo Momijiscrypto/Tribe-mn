@@ -7,7 +7,7 @@ cd
 rm -r DAS-Source
 
 echo "Cloning the Momijiscrypto Github for the compiled wallet..."
-git clone https://github.com/Momijiscrypto/DAS-Masternode-script
+git pull origin master https://github.com/Momijiscrypto/DAS-Masternode-script
 cd
 mkdir das
 cp -R DAS-Masternode-script/dasv012/. das
