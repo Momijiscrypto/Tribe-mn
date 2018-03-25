@@ -6,8 +6,10 @@ sleep 5s
 cd
 rm -r DAS-Source
 
-echo "Cloning the Momijiscrypto Github for the compiled wallet..."
-git pull origin master https://github.com/Momijiscrypto/DAS-Masternode-script
+echo "Pulling wallet files from Momijiscrypto's Github for the compiled wallet..."
+cd DAS-Masternode-script
+git pull
+
 cd
 mkdir das
 cp -R DAS-Masternode-script/dasv012/. das
