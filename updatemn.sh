@@ -8,6 +8,7 @@ rm -r DAS-Source
 
 echo "Pulling wallet files from Momijiscrypto's Github for the compiled wallet..."
 cd DAS-Masternode-script
+git reset --hard
 git pull
 
 cd
