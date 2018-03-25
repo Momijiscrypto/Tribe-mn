@@ -4,7 +4,8 @@ echo "Updating your masternode..."
 echo "deleting old client folder..."
 sleep 5s
 cd
-rm DAS-source/.
+rm -r DAS-Source
+
 echo "Cloning the Momijiscrypto Github for the compiled wallet..."
 git clone https://github.com/Momijiscrypto/DAS-Masternode-script
 cd
