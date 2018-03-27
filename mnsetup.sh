@@ -173,6 +173,7 @@ cd das
 echo "Syncing..."
 ./dasd -daemon
 
+cd
 cd DAS-Masternode-script
 git reset --hard
 
