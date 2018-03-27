@@ -25,12 +25,7 @@ add-apt-repository ppa:bitcoin/bitcoin -y
 apt-get update -y
 apt-get install libdb4.8-dev libdb4.8++-dev -y
 
-echo "Installing Git..."
-apt-get install git-core -y
-
-
 echo "Cloning the Momijiscrypto Github for the compiled wallet..."
-git clone https://github.com/Momijiscrypto/DAS-Masternode-script
 cd
 mkdir das
 cp -R DAS-Masternode-script/dasv012/. das
@@ -177,6 +172,9 @@ cd
 cd das
 echo "Syncing..."
 ./dasd -daemon
+
+cd DAS-Masternode-script
+git reset --hard
 
 cd
 echo "You can use the command: sudo ./das-cli getblockcount to see what block you're on. All you need to do first is type: cd das and ./das-cli getblockcount"
