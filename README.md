@@ -11,7 +11,7 @@ Instructions for a clean install on a vps:
 
 2: Once both have finished, copy the following command below:
 
-  git clone https://github.com/Momijiscrypto/Tribe-m
+  git clone https://github.com/Momijiscrypto/Tribe-mn
 
 3: Run the following commands to make the script executable:
 
