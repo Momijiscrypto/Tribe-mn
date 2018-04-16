@@ -38,6 +38,7 @@ rm -r das
 rm -r DAS-Masternode-script
 
 cd tribe
+./tribed -daemon
 echo "Running 3 block count tests... It's okay to get an error"
 sleep 5s
 ./tribe-cli getblockcount
