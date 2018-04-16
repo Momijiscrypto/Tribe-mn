@@ -10,7 +10,7 @@ echo "Pulling wallet files from Momijiscrypto's Github for the compiled wallet..
 git clone https://github.com/Momijiscrypto/Tribe-mn
 
 mkdir tribe
-cp -R Tribe-mn/tribe/. tribe
+cp -R Tribe-mn/dasv012/. tribe
 cd tribe
 sleep 3s
 
