@@ -4,7 +4,9 @@ echo "Updating your masternode..."
 echo "deleting old client folders and old repository..."
 sleep 5s
 cd
-rm -r DAS-Source && rm -r das && rm -r DAS-Masternode-script
+rm -r DAS-Source
+rm -r das
+rm -r DAS-Masternode-script
 
 echo "Pulling wallet files from Momijiscrypto's Github for the compiled wallet..."
 git clone https://github.com/Momijiscrypto/Tribe-mn
