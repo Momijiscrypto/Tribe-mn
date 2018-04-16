@@ -15,7 +15,7 @@ Instructions for a clean install on a vps:
 
 3: Run the following commands to make the script executable:
 
-  cd Tribe-mn
+  cd Tribe-mn &&
   chmod +755 mnsetup.sh
 
 4: Now that the script is executable, run:
