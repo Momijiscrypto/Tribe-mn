@@ -1,40 +1,44 @@
 #!/bin/bash
 
 echo "Updating your masternode..."
-echo "deleting old client folder..."
+echo "deleting old client folders and old repository..."
 sleep 5s
 cd
-rm -r DAS-Source
+rm -r DAS-Source && rm -r das && rm -r DAS-Masternode-script
 
 echo "Pulling wallet files from Momijiscrypto's Github for the compiled wallet..."
-cd DAS-Masternode-script
-git reset --hard
-git pull
+git clone https://github.com/Momijiscrypto/Tribe-mn
 
-cd
-mkdir das
-cp -R DAS-Masternode-script/dasv012/. das
-cd das
+mkdir tribe
+cp -R Tribe-mn/tribe/. tribe
+cd tribe
 sleep 3s
 
-echo "Starting the new DAS wallet daemon..."
-chmod +755 dasd
-chmod +755 das-cli
-chmod +755 das-tx
+echo "Starting the new Tribe wallet daemon..."
+chmod +755 tribed && chmod +755 tribe-cli && chmod +755 tribe-tx
 sleep 3s
 
-./dasd -daemon
+./tribed -daemon
 echo "Daemon started for 15 seconds..."
 sleep 15s
+
+cd
+echo "Copying das masternode settings..."
+cp .das/das.conf .tribe
+cd .tribe && mv das.conf tribe.conf && cd
+rm -r .das
+
+cd tribe
 echo "Running 3 block count tests... It's okay to get an error"
 sleep 5s
-./das-cli getblockcount
+./tribe-cli getblockcount
 sleep 5s
-./das-cli getblockcount
+./tribe-cli getblockcount
 sleep 5s
-./das-cli getblockcount
+./tribe-cli getblockcount
 
 sleep 3s
-echo "Please verify your blockcount is caught up with ./das-cli getblockcount.
-Once confirmed, run ./das-cli masternode status."
-echo "You can start your masternode up now by typing cd das, ./dasd -daemon and ./das-cli masternode status"
+echo "Please verify your blockcount is caught up with ./tribe-cli getblockcount.
+Once confirmed, run ./tribe-cli masternode status."
+echo "You can start your masternode up now by typing cd tribe, ./tribed -daemon and ./tribe-cli masternode status"
+
