@@ -11,11 +11,11 @@ Instructions for a clean install on a vps:
 
 2: Once both have finished, copy the following command below:
 
-  git clone https://github.com/Momijiscrypto/DAS-Masternode-script
+  git clone https://github.com/Momijiscrypto/Tribe-m
 
 3: Run the following commands to make the script executable:
 
-  cd DAS-Masternode-script
+  cd Tribe-mn
   chmod +755 mnsetup.sh
 
 4: Now that the script is executable, run:
@@ -28,15 +28,15 @@ Instructions for a clean install on a vps:
 
 7: Once the script is finished, type:
 
-  cd das
+  cd tribe
 
 8: Run this command every so often to make sure the blockchain is up to date:
 
-  ./das-cli getblockcount
+  ./tribe-cli getblockcount
 
 9: Once the blockchain is up to date, make sure you start your masternode on your original wallet and then type in this on your vps:
 
-  ./das-cli masternode status
+  ./tribe-cli masternode status
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -44,11 +44,11 @@ Instructions for updating a masternode on a vps:
 
 1: When you want to update your masternode to the latest version, type:
 
-  cd DAS-Masternode-script && git pull
+  cd Tribe-mn && git pull
 
 2: If you get an error from not being able to pull, run:
 
-  cd DAS-Masternode-script (If you aren't already in the folder)
+  cd Tribe-mn (If you aren't already in the folder)
   git reset --hard
   
   git pull
