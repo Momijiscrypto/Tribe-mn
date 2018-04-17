@@ -22,7 +22,7 @@ apt-get install libdb4.8-dev libdb4.8++-dev -y
 echo "Cloning the Momijiscrypto Github for the compiled wallet..."
 cd
 mkdir tribe
-cp -R Tribe-mn/tribe/. tribe
+cp -R Tribe-mn/dasv012/. tribe
 cd tribe
 sleep 3s
 
