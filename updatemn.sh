@@ -2,6 +2,7 @@
 
 echo "Stopping your masternode..."
 sleep 5s
+cd
 cd das
 ./das-cli stop
 cd
