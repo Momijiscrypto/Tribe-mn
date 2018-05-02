@@ -40,6 +40,7 @@ cd && cd .tribe
 
 echo "masternode=1" >> tribe.conf
 echo "daemon=1" >> tribe.conf
+echo "listen=1" >> tribe.conf
 echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 
