@@ -40,7 +40,6 @@ cd && cd .tribe
 
 echo "masternode=1" >> tribe.conf
 echo "daemon=1" >> tribe.conf
-echo "listen=0" >> tribe.conf
 echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 
@@ -49,7 +48,6 @@ case "$choice" in
   y|Y ) echo "Running first instance..."
 cd
 cd tribe
-echo "Testing wallet with nodes..."
 sleep 3s
 ./tribed -daemon
 echo "Running 3 block count tests... It's okay to get an error"
