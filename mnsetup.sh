@@ -36,10 +36,6 @@ sleep 15s
 echo "Stopping server now..."
 ./tribe-cli stop
 
-cd && cd .tribe
-
-echo "masternode=1" >> tribe.conf
-echo "daemon=1" >> tribe.conf
 echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 
@@ -65,16 +61,16 @@ cd
 cd .tribe
 
 echo "Please enter your rpc credentials... "
+echo "masternode=1" >> tribe.conf
+echo "daemon=1" >> tribe.conf
+echo "listen=0" >> tribe.conf
   echo "rpcuser="
   read rpcuser
   echo "rpcuser=$rpcuser" >>tribe.conf
   echo "rpcpassword="
   read rpcpassword
   echo "rpcpassword=$rpcpassword" >>tribe.conf
-  echo "Enter 9399 if this is your first masternode."
-  echo "rpcport="
-  read rpcport
-  echo "rpcport=$rpcport" >>tribe.conf
+  echo "rpcport=9399" >>tribe.conf
   echo "Enter your masternode's public ip address."
   echo "masternodeaddr="
   read vpsip
@@ -100,6 +96,9 @@ sleep 3s
 
 cd
 cd .tribe
+echo "masternode=1" >> tribe.conf
+echo "daemon=1" >> tribe.conf
+echo "listen=0" >> tribe.conf
       echo "Please enter your rpc credentials... "
       echo "rpcuser="
       read rpcuser
