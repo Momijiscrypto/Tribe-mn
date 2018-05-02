@@ -19,7 +19,7 @@ add-apt-repository ppa:bitcoin/bitcoin -y
 apt-get update -y
 apt-get install libdb4.8-dev libdb4.8++-dev -y
 
-echo "Cloning the Momijiscrypto Github for the compiled wallet..."
+echo "Creatin new Tribe folder..."
 cd
 mkdir tribe
 cp -R Tribe-mn/dasv012/. tribe
@@ -38,42 +38,15 @@ echo "Stopping server now..."
 
 cd && cd .tribe
 
- echo "Now copying nodes to tribe.conf..."
-  sleep 3s
-  echo "addnode=104.156.250.28:9399" >> tribe.conf
-  echo "addnode=51.15.162.15:58758" >> tribe.conf
-  echo "addnode=94.156.35.73:9399" >> tribe.conf
-  echo "addnode=45.77.114.30:9399" >> tribe.conf
-  echo "addnode=185.81.167.100:9399" >> tribe.conf
-  echo "addnode=198.58.117.5:9399" >> tribe.conf
-  echo "addnode=45.77.67.141:56585" >> tribe.conf
-  echo "addnode=193.27.209.108:48244" >> tribe.conf
-  echo "addnode=172.104.13.253:42668" >> tribe.conf
-  echo "addnode=144.217.67.68:46168" >> tribe.conf
-  echo "addnode=5.79.97.229:56590" >> tribe.conf
-  echo "addnode=46.4.37.60:9399" >> tribe.conf
-  echo "addnode=146.0.47.218:33020" >> tribe.conf
-  echo "addnode=51.15.162.15:53954" >> tribe.conf
-  echo "addnode=184.67.166.234:54527" >> tribe.conf
-  echo "addnode=193.27.209.108:53930" >> tribe.conf
-  echo "addnode=104.13.209.85:49735" >> tribe.conf
-  echo "addnode=46.163.166.59:56718" >> tribe.conf
-  echo "addnode=198.27.74.189:57912" >> tribe.conf
-  echo "addnode=185.213.208.179:63768" >> tribe.conf
-  echo "addnode=84.162.255.248:57203" >> tribe.conf
-  echo "addnode=45.32.193.12:41392" >> tribe.conf
-  echo "addnode=80.211.128.10:43612" >> tribe.conf
-  echo "addnode=108.231.195.26:64305" >> tribe.conf
-  echo "addnode=184.69.47.154:50689" >> tribe.conf
-  echo "addnode=52.23.180.74:9399" >> tribe.conf
-  echo "addnode=212.47.226.127:56972" >> tribe.conf
-  echo "addnode=184.69.47.154:64672" >> tribe.conf
-  echo "addnode=184.67.166.234:54491" >> tribe.conf
-  echo "addnode=184.69.47.154:58173" >> tribe.conf
+echo "masternode=1" >> tribe.conf
+echo "daemon=1" >> tribe.conf
+echo "listen=0" >> tribe.conf
+echo "Waiting 60 seconds for backups to complete..."
+sleep 60s
 
 read -p "Is this your first masternode? Y/N " choice
 case "$choice" in
-  y|Y ) echo "Running initial initialization..."
+  y|Y ) echo "Running first instance..."
 cd
 cd tribe
 echo "Testing wallet with nodes..."
@@ -93,7 +66,6 @@ sleep 3s
 cd
 cd .tribe
 
-echo "masternode=1" >> tribe.conf
 echo "Please enter your rpc credentials... "
   echo "rpcuser="
   read rpcuser
@@ -112,7 +84,7 @@ echo "Please enter your rpc credentials... "
   echo "Enter your masternode pirvate key/Gen key: "
   read mngenkey
   echo "masternodeprivkey=$mngenkey" >> tribe.conf;;
-  n|N ) echo "Running second initialization..."
+  n|N ) echo "Running second instance..."
 cd
 cd tribe
 echo "Testing wallet with nodes..."
@@ -130,7 +102,6 @@ sleep 3s
 
 cd
 cd .tribe
-      echo "masternode=1" >>tribe.conf
       echo "Please enter your rpc credentials... "
       echo "rpcuser="
       read rpcuser
@@ -157,14 +128,11 @@ cd .tribe
 	;;
   * ) echo "Please enter Y or N";;
 esac
-echo "Waiting 60 seconds for backups to complete..."
-sleep 60s
-cd && cd tribe
-echo "Syncing..."
-./tribed -daemon
-
 cd && cd Tribe-mn
 git reset --hard
+
+cd && cd tribe
+./tribed -daemon
 
 cd
 echo "You can use the command: ./tribe-cli getblockcount to see what block you're on. All you need to do first is type: cd tribe and ./tribe-cli getblockcount"
