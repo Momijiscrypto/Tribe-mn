@@ -19,7 +19,7 @@ add-apt-repository ppa:bitcoin/bitcoin -y
 apt-get update -y
 apt-get install libdb4.8-dev libdb4.8++-dev -y
 
-echo "Creatin new Tribe folder..."
+echo "Creating new Tribe folder..."
 cd
 mkdir tribe
 cp -R Tribe-mn/dasv012/. tribe
@@ -40,7 +40,6 @@ cd && cd .tribe
 
 echo "masternode=1" >> tribe.conf
 echo "daemon=1" >> tribe.conf
-echo "listen=1" >> tribe.conf
 echo "Waiting 60 seconds for backups to complete..."
 sleep 60s
 
