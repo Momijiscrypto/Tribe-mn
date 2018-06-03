@@ -1,5 +1,5 @@
 # Tribe-Masternode-Script
-A masternode script for DAS to ensure your masternode is running on your Ubuntu vps as fast as possible.
+A masternode script for Tribe to ensure your masternode is running on your Ubuntu vps as fast as possible.
 -Momijiscrypto
 
 
