@@ -128,6 +128,10 @@ esac
 cd && cd Tribe-mn
 git reset --hard
 
+echo "Setting up a crontab job to clear the debug log to preven your node from running out of space..."
+sleep 3s
+{ crontab -l; echo "* * * * * echo "\" \"" > /root/.tribe/debug.log"; } | crontab -
+
 cd && cd tribe
 ./tribed -daemon
 
