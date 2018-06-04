@@ -74,7 +74,7 @@ echo "listen=0" >> tribe.conf
   echo "Enter your masternode's public ip address."
   echo "masternodeaddr="
   read vpsip
-  echo "masternodeaddr=$vpsip:$rpcport" >> tribe.conf
+  echo "masternodeaddr=$vpsip:9399" >> tribe.conf
   echo "Enter your masternode pirvate key/Gen key: "
   read mngenkey
   echo "masternodeprivkey=$mngenkey" >> tribe.conf;;
